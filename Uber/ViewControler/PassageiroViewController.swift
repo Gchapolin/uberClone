@@ -26,6 +26,14 @@ class PassageiroViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
+    
+    @IBAction func chamarUber(_ sender: Any) {
+        
+        
+        
+    }
+    
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         //recuperar as coordenadas do usuário
