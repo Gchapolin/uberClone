@@ -230,7 +230,7 @@
                     <navigationItem key="navigationItem" title="Uber" id="hM0-kk-jO5">
                         <barButtonItem key="leftBarButtonItem" title="Deslogar" id="LIi-p2-wle">
                             <connections>
-                                <action selector="deslogarUsuario:" destination="Rua-0s-wv6" id="bQZ-qN-d84"/>
+                                <action selector="deslogarUsuario:" destination="Rua-0s-wv6" id="0Qx-oz-pb0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
