@@ -15,6 +15,15 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let autenticacao = Auth.auth()
+        /*do {
+            try autenticacao.signOut()
+        } catch  {
+            
+        }*/
+        
+        
+        
+        
         autenticacao.addStateDidChangeListener { (autenticacao, usuario) in
             
             if let usuarioLogado = usuario {

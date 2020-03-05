@@ -7,9 +7,30 @@
 //
 
 import UIKit
+import FirebaseAuth
+import MapKit
 
 class PassageiroViewController: UIViewController {
 
+    @IBOutlet weak var mapa: MKMapView!
+    
+    
+    @IBAction func deslogarUsuario(_ sender: Any) {
+        
+        let autenticacao = Auth.auth()
+        
+        do {
+            try autenticacao.signOut()
+            dismiss(animated: true, completion: nil)
+        } catch  {
+            print("Não foi possível deslogar o usuário")
+        }
+         
+        
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
