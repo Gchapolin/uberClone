@@ -100,7 +100,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Uber" id="lgU-Im-dhq"/>
                     <connections>
-                        <segue destination="Rua-0s-wv6" kind="presentation" identifier="segueLoginPrincipal" id="Cdu-uw-zEA"/>
+                        <segue destination="TBl-QI-aIb" kind="presentation" identifier="segueLoginPrincipal" id="NMo-78-atB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -196,10 +196,48 @@
                     <view key="view" contentMode="scaleToFill" id="OUy-qa-evf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3sp-eq-bi3">
+                                <rect key="frame" x="0.0" y="56" width="414" height="766"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4J-H1-CLN">
+                                <rect key="frame" x="0.0" y="757" width="414" height="65"/>
+                                <color key="backgroundColor" red="0.066666666669999999" green="0.57647058819999997" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="HTZ-8d-cjA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Chamar Uber">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="chamarUber:" destination="Rua-0s-wv6" eventType="touchUpInside" id="nTp-Fi-tyl"/>
+                                    <action selector="entrar:" destination="iRn-Va-70a" eventType="touchUpInside" id="SQT-u6-ozc"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="3sp-eq-bi3" secondAttribute="bottom" constant="20" symbolic="YES" id="71y-bT-nnA"/>
+                            <constraint firstItem="L4J-H1-CLN" firstAttribute="leading" secondItem="DX9-v7-5RN" secondAttribute="leading" id="EZb-qu-fuw"/>
+                            <constraint firstItem="3sp-eq-bi3" firstAttribute="top" secondItem="DX9-v7-5RN" secondAttribute="top" id="Gnb-Qm-QtG"/>
+                            <constraint firstItem="3sp-eq-bi3" firstAttribute="trailing" secondItem="DX9-v7-5RN" secondAttribute="trailing" id="KCL-V1-Hrp"/>
+                            <constraint firstItem="3sp-eq-bi3" firstAttribute="leading" secondItem="DX9-v7-5RN" secondAttribute="leading" id="XKc-zT-NH4"/>
+                            <constraint firstAttribute="bottom" secondItem="L4J-H1-CLN" secondAttribute="bottom" constant="20" symbolic="YES" id="fJJ-Nd-BA0"/>
+                            <constraint firstItem="L4J-H1-CLN" firstAttribute="trailing" secondItem="DX9-v7-5RN" secondAttribute="trailing" id="n9v-Dh-gLh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="DX9-v7-5RN"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Uber" id="hM0-kk-jO5"/>
+                    <navigationItem key="navigationItem" title="Uber" id="hM0-kk-jO5">
+                        <barButtonItem key="leftBarButtonItem" title="Deslogar" id="LIi-p2-wle">
+                            <connections>
+                                <action selector="deslogarUsuario:" destination="Rua-0s-wv6" id="0Qx-oz-pb0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapa" destination="3sp-eq-bi3" id="PNh-Ka-sgN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6YR-gO-K83" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -360,7 +398,6 @@
         <image name="logo" width="315" height="317"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PTW-uj-sm8"/>
-        <segue reference="BAX-Th-zeQ"/>
+        <segue reference="g4J-AA-S8t"/>
     </inferredMetricsTieBreakers>
 </document>
