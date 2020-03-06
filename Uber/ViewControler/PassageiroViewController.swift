@@ -9,11 +9,16 @@
 import UIKit
 import FirebaseAuth
 import MapKit
+import FirebaseDatabase
+
+
+
 
 class PassageiroViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapa: MKMapView!
     var gerenciadorLocalizacao = CLLocationManager()
+    var localUsuario = CLLocationCoordinate2D()
      
 
     override func viewDidLoad() {
@@ -29,8 +34,25 @@ class PassageiroViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func chamarUber(_ sender: Any) {
         
+        let database = Database.database().reference()
+        let autenticaca = Auth.auth()
         
+        let requisicao = database.child("requisicao")
         
+        if let emailUsuario = autenticaca.currentUser?.email{
+        
+            let dadosUsuario = [
+                "email": emailUsuario,
+                "nome":"Guilherme",
+                "latitude": self.localUsuario.latitude,
+                "longitude": self.localUsuario.longitude
+                
+                
+            ] as [String : Any]
+            requisicao.childByAutoId().setValue(dadosUsuario)
+            
+        }
+
     }
     
     
@@ -38,7 +60,10 @@ class PassageiroViewController: UIViewController, CLLocationManagerDelegate {
         
         //recuperar as coordenadas do usuário
         if let coordenadas = manager.location?.coordinate{
-        
+            
+            //Configura o local do usuario
+            self.localUsuario = coordenadas
+            
             let regiao = MKCoordinateRegion(center: coordenadas, latitudinalMeters: 2000, longitudinalMeters: 2000 )
             mapa.setRegion(regiao, animated: true)
             
@@ -46,7 +71,6 @@ class PassageiroViewController: UIViewController, CLLocationManagerDelegate {
             mapa.removeAnnotations(mapa.annotations)
             
             //criar anotação da localização do usuario
-            
             let anotacaoUsuario = MKPointAnnotation()
             anotacaoUsuario.coordinate = coordenadas
             anotacaoUsuario.title = "Seu Local"
